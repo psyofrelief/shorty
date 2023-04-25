@@ -1,0 +1,107 @@
+.Authpage {
+  border: 2px solid black;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8faff;
+  main {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+  }
+}
+
+.intro-text {
+  font-weight: 800;
+  font-size: 1.8rem;
+  bottom: 125%;
+  color: var(--clr-text-dark-900);
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 1.2rem;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: var(--clr-text-dark-700);
+    font-weight: 500;
+  }
+}
+
+.success-message {
+  font-size: 1rem;
+  color: #00d534;
+}
+.error-message {
+  font-size: 1rem;
+  color: #d70016;
+}
+
+.form-auth {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-width: 450px;
+  margin: auto;
+  gap: 1em;
+}
+
+.inp-username,
+.inp-password {
+  padding: 0.5em 0.7em;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.btn-auth {
+  background-color: var(--clr-primary);
+  border: none;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.6em 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--clr-text-dark-900);
+  }
+}
+
+.switch {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 1.4em;
+  color: var(--clr-text-dark-700);
+  span {
+    color: var(--clr-primary);
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.Footer {
+  z-index: 1;
+}
+@media screen and (max-width: 800px) {
+  .form-auth {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-auth {
+    min-width: 200px;
+    max-width: 300px;
+  }
+}

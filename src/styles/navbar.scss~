@@ -1,0 +1,28 @@
+.Navbar {
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  flex: 1;
+  max-width: 800px;
+  border: 1px solid;
+  align-items: center;
+}
+
+.btn-logout {
+  font-size: 1.1rem;
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    margin-left: 0.4em;
+    display: flex;
+    justify-content: center;
+  }
+}
