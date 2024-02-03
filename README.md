@@ -6,6 +6,8 @@
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
+https://shorty.bio
+
 A quick and practical web-based tool that turns lengthy URLs into short, shareable links. Our cutting-edge algorithm will create a shortened link that is simple to remember and share once you enter your lengthy URL. Share links with ease via email, messaging, or social media, and monitor click statistics for your shortened URLs. With Shor.ty, you can trim down your online presence, share links more easily, and save characters.
 
 ## Features 
