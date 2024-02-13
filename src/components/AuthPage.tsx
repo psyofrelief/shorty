@@ -17,12 +17,14 @@ const AuthPage = () => {
     username: "",
     password: "",
   });
+
   const [error, setError] = useState<Boolean | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [success, setSuccess] = useState<Boolean | null>(null);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [isLoginPage, setIsLoginPage] = useState<boolean>(true);
 
+  // Navigation hook
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +39,7 @@ const AuthPage = () => {
     });
   };
 
+  // Function to validate form values
   const checkValueValidity = () => {
     const { username, password } = values;
     const regex = /^[^\s](?!.*\s$)[\w\d]*$/;
@@ -44,7 +47,7 @@ const AuthPage = () => {
     if (username.length < 6 || password.length < 6) {
       setError(true);
       setErrorMessage(
-        "Username & password must be greater than 6 characters each"
+        "Username & password must be greater than 6 characters each",
       );
       return false;
     }
@@ -52,7 +55,7 @@ const AuthPage = () => {
     if (!regex.test(username) || !regex.test(password)) {
       setError(true);
       setErrorMessage(
-        "Username and password must be in alphanumerical format with no whitespace"
+        "Username and password must be in alphanumerical format with no whitespace",
       );
       return false;
     }
@@ -91,6 +94,7 @@ const AuthPage = () => {
       .catch((error) => console.error(error));
   };
 
+  // Function to log in to account
   const loginToAccount = async () => {
     if (!checkValueValidity()) {
       return;
@@ -127,7 +131,7 @@ const AuthPage = () => {
     if (username.length < 6 || password.length < 6) {
       setError(true);
       setErrorMessage(
-        "Username & password must be greater than 6 characters each"
+        "Username & password must be greater than 6 characters each",
       );
       return;
     }
@@ -139,6 +143,7 @@ const AuthPage = () => {
     }
   };
 
+  // Function to switch between login and sign up forms
   const handleIsLoginForm = (val: boolean) => {
     if (val) {
       setIsLoginPage(true);
@@ -147,6 +152,7 @@ const AuthPage = () => {
     }
   };
 
+  // Effect to reset success state and message when error changes
   useEffect(() => {
     if (error) {
       setSuccess(false);

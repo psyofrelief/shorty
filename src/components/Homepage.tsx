@@ -46,6 +46,7 @@ const Homepage = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
+  // Function to fetch user data from the server
   const fetchUserData = async () => {
     await fetch("http://13.211.198.149/session_var.php", {
       method: "POST",
@@ -56,6 +57,7 @@ const Homepage = () => {
         const { is_logged_in, user_name, links } = data;
         const updatedLinks = JSON.parse(links) ? JSON.parse(links)[0] : null;
         if (is_logged_in) {
+          // If user is logged in, update user data in state & localStorage
           login();
           setUserData({
             ...userData,
@@ -63,7 +65,6 @@ const Homepage = () => {
             links: updatedLinks,
           });
 
-          // Store links and username in localStorage
           localStorage.setItem("links", JSON.stringify(updatedLinks));
           localStorage.setItem("username", user_name);
         } else {
@@ -72,6 +73,7 @@ const Homepage = () => {
       });
   };
 
+  // Function to update user data in the database
   const updateDBLinks = () => {
     fetch("http://13.211.198.149/update_user_data.php", {
       method: "POST",
@@ -92,6 +94,7 @@ const Homepage = () => {
     setValues({ ...values, [name]: value });
   };
 
+  // Function to handle shortened URL
   const handleURL = (url: string) => {
     const linkTitle = values.url;
     const updatedLinks = userData.links ?? [];
@@ -99,10 +102,12 @@ const Homepage = () => {
     setUserData({ ...userData, links: updatedLinks });
   };
 
+  // Regular expression to validate URL
   const regex =
     /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*\.[^\s]{2,}(?:\.[a-z]{2,4})?/;
   const isValidLink = (link: string) => regex.test(link);
 
+  // Function to handle form submission
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isValidLink(values.url)) {
@@ -115,6 +120,7 @@ const Homepage = () => {
     setValues({ ...values, url: "" });
   };
 
+  // Effect to handle initial loading and user data retrieval
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/");
@@ -141,6 +147,7 @@ const Homepage = () => {
     fetchAndSetUserData();
   }, []);
 
+  // Effect to update user data in local storage and database
   useEffect(() => {
     setTimeout(() => {
       localStorage.setItem("links", JSON.stringify(userData.links));
@@ -150,18 +157,20 @@ const Homepage = () => {
     }, 1000);
   }, [userData]);
 
+  // Function to remove a link from the list
   const handleRemoveLink = (itemIndex: number) => {
     // prevUserData ensures I capture most recent userData;
     setUserData((prevUserData) => {
       const updatedLinks = prevUserData.links.filter(
         // _ is a placeholder for the value parameter;
-        (_, index) => index !== itemIndex
+        (_, index) => index !== itemIndex,
       );
 
       return { ...prevUserData, links: updatedLinks };
     });
   };
 
+  // Function to map and render links
   const mappedLinks = () => {
     return userData.links
       ? userData.links.map(
@@ -183,7 +192,7 @@ const Homepage = () => {
                 </button>
               </div>
             );
-          }
+          },
         )
       : null;
   };

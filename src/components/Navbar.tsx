@@ -12,6 +12,7 @@ const Navbar: React.FC<NavProps> = ({ isLoggedIn }) => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // Function to log out of account
   const logoutOfAccount = async () => {
     await fetch("http://13.211.198.149/logout.php", {
       method: "POST",
